@@ -1,0 +1,75 @@
+{
+  "name": "zahori",
+  "version": "0.1.0",
+  "description": "Find the media stream behind any web page. A real browser drives the player and sniffs out the HLS/DASH/MP4; an optional LLM learns tricky sites and repairs them when they change.",
+  "license": "MIT",
+  "author": "Jose Sepulveda",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/josesepulvedapino/zahori.git"
+  },
+  "homepage": "https://github.com/josesepulvedapino/zahori#readme",
+  "bugs": "https://github.com/josesepulvedapino/zahori/issues",
+  "type": "module",
+  "sideEffects": false,
+  "mcpName": "io.github.josesepulvedapino/zahori",
+  "packageManager": "pnpm@10.33.0",
+  "engines": {
+    "node": ">=20"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "zahori": "./dist/cli.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest run --exclude \"tests/e2e/**\"",
+    "test:e2e": "vitest run tests/e2e",
+    "test:all": "vitest run",
+    "test:watch": "vitest --exclude \"tests/e2e/**\"",
+    "typecheck": "tsc --noEmit",
+    "cli": "node --enable-source-maps dist/cli.js",
+    "prepublishOnly": "pnpm typecheck && pnpm test && pnpm build"
+  },
+  "keywords": [
+    "hls",
+    "m3u8",
+    "dash",
+    "stream",
+    "video",
+    "live",
+    "download",
+    "playwright",
+    "yt-dlp",
+    "mcp",
+    "archiving"
+  ],
+  "dependencies": {
+    "@ai-sdk/anthropic": "^4.0.11",
+    "@ai-sdk/openai": "^4.0.10",
+    "@ai-sdk/openai-compatible": "^3.0.7",
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "ai": "^7.0.19",
+    "commander": "^12.1.0",
+    "playwright": "^1.49.0",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsup": "^8.3.0",
+    "typescript": "^5.7.0",
+    "vitest": "^2.1.0"
+  }
+}
